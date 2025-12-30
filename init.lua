@@ -728,7 +728,12 @@ require('lazy').setup({
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
+        'stylua', -- Lua formatter
+        'ruff', -- Python formatter and linter
+        'biome', -- TS/JS formatter and linter
+        'prettierd', -- JSON, Markdown, YAML, HTML, CSS formatter (fast daemon)
+        'prettier', -- JSON, Markdown, YAML, HTML, CSS formatter (fallback)
+        'shfmt', -- Shell script formatter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -781,11 +786,18 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        python = { 'ruff_organize_imports', 'ruff_format' },
+        typescript = { 'biome' },
+        typescriptreact = { 'biome' },
+        javascript = { 'biome' },
+        javascriptreact = { 'biome' },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+        yaml = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        html = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
+        sh = { 'shfmt' },
+        bash = { 'shfmt' },
       },
     },
   },
