@@ -1,58 +1,58 @@
 -- Editor options
--- See `:help vim.o` and `:help option-list`
+-- See `:help vim.opt` and `:help option-list`
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- Line numbers
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Mouse mode
-vim.o.mouse = 'a'
+vim.opt.mouse = 'a'
 
 -- Don't show mode in command line (shown in statusline)
-vim.o.showmode = false
+vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim
 -- vim.schedule(function()
---   vim.o.clipboard = 'unnamedplus'
+--   vim.opt.clipboard = 'unnamedplus'
 -- end)
 
 -- Indentation
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Persistent undo
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Search settings
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Always show signcolumn
-vim.o.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Faster updates
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 -- Split behavior
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Whitespace display
-vim.o.list = true
+vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Live substitution preview
-vim.o.inccommand = 'split'
+vim.opt.inccommand = 'split'
 
 -- Cursor line highlight
-vim.o.cursorline = true
+vim.opt.cursorline = true
 
 -- Keep context around cursor
-vim.o.scrolloff = 10
+vim.opt.scrolloff = 10
 
 -- Prompt to save instead of error
-vim.o.confirm = true
+vim.opt.confirm = true
