@@ -54,7 +54,7 @@ Each plugin has its own file for easy customization and maintenance.
 
 ### Testing
 
-- **neotest** - Test runner (Go, Vitest, Jest)
+- **neotest** - Test runner (pytest, Go, Vitest, Jest)
 
 ### Treesitter
 
