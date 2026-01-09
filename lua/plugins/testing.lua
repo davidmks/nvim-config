@@ -7,7 +7,17 @@ return {
       'nvim-lua/plenary.nvim',
       'antoinemadec/FixCursorHold.nvim',
       'nvim-treesitter/nvim-treesitter',
+      -- Test adapters
       'nvim-neotest/neotest-python',
+      {
+        'fredrikaverpil/neotest-golang',
+        version = '*',
+        build = function()
+          vim.system({ 'go', 'install', 'gotest.tools/gotestsum@latest' }):wait()
+        end,
+      },
+      'marilari88/neotest-vitest',
+      'nvim-neotest/neotest-jest',
     },
     keys = {
       { '<leader>tn', function() require('neotest').run.run() end, desc = '[T]est [N]earest' },
@@ -24,6 +34,13 @@ return {
           require 'neotest-python' {
             dap = { justMyCode = false },
             runner = 'pytest',
+          },
+          require 'neotest-golang' {
+            runner = 'gotestsum',
+          },
+          require 'neotest-vitest',
+          require 'neotest-jest' {
+            jestCommand = 'npm test --',
           },
         },
       }
