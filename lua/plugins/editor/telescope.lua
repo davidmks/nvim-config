@@ -42,9 +42,11 @@ return {
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>sa', function()
-      builtin.find_files({ no_ignore = true })
+      builtin.find_files { no_ignore = true }
     end, { desc = '[S]earch [A]ll files (incl. gitignored)' })
-    vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>ss', builtin.lsp_dynamic_workspace_symbols, { desc = '[S]earch [S]ymbols (workspace)' })
+    vim.keymap.set('n', '<leader>sS', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>so', builtin.lsp_document_symbols, { desc = '[S]earch document symb[o]ls' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
     vim.keymap.set('n', '<leader>sD', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
@@ -54,7 +56,7 @@ return {
       if vim.bo.filetype == 'oil' then
         dir = require('oil').get_current_dir()
       else
-        dir = vim.fn.expand('%:p:h')
+        dir = vim.fn.expand '%:p:h'
       end
       builtin.live_grep { search_dirs = { dir } }
     end, { desc = '[S]earch grep in [d]irectory' })
