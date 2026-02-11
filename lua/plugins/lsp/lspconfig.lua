@@ -7,6 +7,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'j-hui/fidget.nvim', opts = {} },
     'saghen/blink.cmp',
+    { 'b0o/SchemaStore.nvim', lazy = true, version = false },
   },
   config = function()
     -- LSP attach keymaps
@@ -101,6 +102,23 @@ return {
       gopls = {},
       pyright = {},
       ts_ls = {},
+      yamlls = {
+        before_init = function(_, new_config)
+          new_config.settings.yaml.schemas = vim.tbl_deep_extend(
+            'force',
+            new_config.settings.yaml.schemas or {},
+            require('schemastore').yaml.schemas()
+          )
+        end,
+        settings = {
+          redhat = { telemetry = { enabled = false } },
+          yaml = {
+            keyOrdering = false,
+            validate = true,
+            schemaStore = { enable = false, url = '' },
+          },
+        },
+      },
       lua_ls = {
         settings = {
           Lua = {
@@ -119,6 +137,7 @@ return {
       'prettierd',
       'prettier',
       'shfmt',
+      'actionlint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -25,6 +25,10 @@ return {
       callback = function()
         if vim.bo.modifiable then
           lint.try_lint()
+          -- Run actionlint on GitHub Actions workflow files
+          if vim.fn.expand '%:p':find '%.github/workflows/' then
+            lint.try_lint { 'actionlint' }
+          end
         end
       end,
     })
