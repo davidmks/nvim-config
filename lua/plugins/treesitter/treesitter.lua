@@ -7,8 +7,8 @@ return {
     vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99
 
-    local parsers = { 'bash', 'c', 'diff', 'go', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'typescript', 'vim', 'vimdoc', 'yaml' }
-    local filetypes = { 'bash', 'sh', 'c', 'diff', 'go', 'html', 'lua', 'markdown', 'python', 'query', 'typescript', 'vim', 'help', 'yaml' }
+    local parsers = { 'bash', 'c', 'css', 'diff', 'go', 'html', 'javascript', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'query', 'typescript', 'vim', 'vimdoc', 'yaml' }
+    local filetypes = { 'bash', 'sh', 'c', 'css', 'diff', 'go', 'html', 'javascript', 'lua', 'markdown', 'python', 'query', 'typescript', 'vim', 'help', 'yaml' }
 
     require('nvim-treesitter').install(parsers)
 
